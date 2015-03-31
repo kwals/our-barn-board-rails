@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331163246) do
+ActiveRecord::Schema.define(version: 20150331170135) do
+
+  create_table "horses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "registered_name"
+    t.date     "birthday"
+    t.integer  "user_id"
+    t.string   "breed"
+    t.string   "color"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "horses", ["user_id"], name: "index_horses_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
