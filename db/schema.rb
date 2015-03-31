@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331170937) do
+ActiveRecord::Schema.define(version: 20150331172320) do
+
+  create_table "completes", force: :cascade do |t|
+    t.integer  "routine_id"
+    t.datetime "completed_at"
+    t.integer  "user_id"
+    t.text     "notes"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "completes", ["routine_id"], name: "index_completes_on_routine_id"
+  add_index "completes", ["user_id"], name: "index_completes_on_user_id"
 
   create_table "horses", force: :cascade do |t|
     t.string   "name"
