@@ -1,0 +1,23 @@
+<p>
+  <strong>Horse Name:</strong>
+  <%= @horse.name %>
+</p>
+ 
+<p>
+  <strong>Age</strong>
+  <%= "#{time_ago_in_words(@horse.birthday)}" + " old."%>
+</p>
+<p>
+  <strong>Registered Name</strong>
+  <%= @horse.registered_name %>
+</p>
+
+<p>
+  <strong> Breed </strong>
+  <%= @horse.breed %>
+</p>
+
+<p>
+  <strong> Color </strong>
+  <%= @horse.color %>
+</p>
