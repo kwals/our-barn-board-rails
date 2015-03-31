@@ -1,0 +1,27 @@
+<h1> Register your horse </h1>
+
+<%= form_for :horse, url: horses_path do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ <p>
+  <%= f.label :birthday %><br>
+  <%= f.text_field :birthday%>
+  </p>
+  <p>
+    <%= f.label :registered_name %><br>
+    <%= f.text_field :registered_name %>
+  </p>
+ <p>
+  <%= f.label :breed %><br>
+  <%= f.text_field :breed%>
+  </p>
+  <p>
+    <%= f.label :color %><br>
+    <%= f.text_field :color %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
