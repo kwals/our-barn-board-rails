@@ -1,28 +1,10 @@
-== README
+== Our Barn Board
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is part of my final project for my Ruby On Rails Engineering Course.
 
-Things you may want to cover:
+The application is a project management tool for horse owners. It allows owners to update information on what their horses need each morning and evening, and allows others to view that information. Additionally, it allows a user to notify a horse's owner when the horse has been fed. 
 
-* Ruby version
+I plan to use Redis and Sidekiq with Sidetiq to create background workers.
 
-* System dependencies
+Currently WIP.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
