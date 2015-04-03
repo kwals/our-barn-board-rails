@@ -1,0 +1,1 @@
+Figaro.require_keys("KATIES_TWILIO", "T_ACCOUNT_SID", "T_AUTH_TOKEN")

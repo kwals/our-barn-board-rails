@@ -3,7 +3,11 @@ class Complete < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :routine
+  def initialize
+    # This should call the function to alert the owner
+  end
 
+# This is the definition the Background Worker needs to know about 
   def self.incomplete(kind)
     # Go and see which completes have been made today. 
     todays_completes = []
