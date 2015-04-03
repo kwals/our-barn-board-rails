@@ -4,7 +4,7 @@ class Complete < ActiveRecord::Base
 
   validates_presence_of :routine
 
-  def self.completed_today(kind)
+  def self.incomplete(kind)
     # Go and see which completes have been made today. 
     todays_completes = []
       Complete.find_each do |c|
