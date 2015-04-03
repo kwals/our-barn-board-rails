@@ -8,8 +8,6 @@ class RoutinesController < ApplicationController
     @horse = Horse.find(params[:horse_id])
     @routine = @horse.routines.new(routine_params)
     if @routine.save!
-      # Call the function that sends the twilio alert to owner.
-      # Should send along time it was completed, person who made it, and horse name
       redirect_to @horse
     else
       render json: "That didn't work."
