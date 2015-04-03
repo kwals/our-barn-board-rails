@@ -10,25 +10,25 @@ class Complete < ActiveRecord::Base
       Complete.find_each do |c|
         recent = c.created_at <=> (Time.now - 6.hours)
         if recent > 0
+          binding.pry
           if Routine.find(c.routine_id).kind == kind
-            binding.pry
-          todays_completes.push(c)
+          todays_completes.push(c.routine_id)
           end
         end
       end
 
-    routines_done = []
-    todays_completes.each {|c| routines_done.push(c.routine_id)}
-    binding.pry
+
+
     routines_to_check = Routine.where(kind: kind).pluck(:id)
     binding.pry
-    routines_undone = routines_done - routines_to_check
-    binding.pry
-    
+    routines_undone = routines_to_check - todays_completes
+
     unless routines_undone.nil?
-      return routines_undone
+      leftovers = []
+      routines_undone.each {|rid| leftovers.push(Routine.find(rid))}
+      return leftovers
     else
-      render json: "All set."
+      render json: "How did you end up with nil here?"
     end
 
   end
