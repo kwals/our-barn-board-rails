@@ -1,7 +1,5 @@
 class HorsesController < ApplicationController
 
-  class HorsesController < ApplicationController
-
   def new
   end
 
@@ -10,9 +8,12 @@ class HorsesController < ApplicationController
     if @horse.save!
       redirect_to @horse
     else
-      binding.pry
       render json: "This did not work."
     end
+  end
+
+  def testaction
+    render json: {"Horses" => "War Admiral", "Owner" => "Bob"}
   end
 
   def show
@@ -23,6 +24,5 @@ private
   def horse_params
     params.require(:horse).permit(:name, :registered_name, :birthday, :user_id, :breed, :color)
   end
-end
 
 end

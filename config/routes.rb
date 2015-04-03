@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  get "/test" => "horses#testaction"
+
   resources :horses do
-    resources :routines 
+    resources :routines do 
+      resources :completes  
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

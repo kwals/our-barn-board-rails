@@ -40,6 +40,9 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'redis'
+gem 'sidekiq'
+gem 'sidetiq'
 
 gem 'devise'
 gem 'figaro'

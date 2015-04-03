@@ -1,0 +1,44 @@
+<p>
+  <strong>Horse Name:</strong>
+  <%= @horse.name %>
+</p>
+ 
+<p>
+  <strong>Age</strong>
+  <% if @horse.birthday %>
+  <%= "#{time_ago_in_words(@horse.birthday)}" + " old."%>
+  <% end %>
+</p>
+<p>
+  <strong>Registered Name</strong>
+  <%= @horse.registered_name %>
+</p>
+
+<p>
+  <strong> Breed </strong>
+  <%= @horse.breed %>
+</p>
+
+<p>
+  <strong> Color </strong>
+  <%= @horse.color %>
+</p>
+
+<p>
+  <strong> Recent Events </strong>
+  <%= @horse.completes.last(10) %>
+</p>
+
+<p>
+  <strong> Routines </strong>
+  <% if @horse.routines %>
+  <% @horse.routines.each do |routine| %>
+  <%= routine.kind %>
+  <%= routine.description %>
+  <%= link_to "Mark as complete", horse_routine_completes_path(routine_id: routine.id, horse_id: @horse.id), method: :post %>
+  <% end %>
+  <% end %>
+</p>
+
+
+

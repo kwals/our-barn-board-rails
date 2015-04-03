@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331180825) do
+ActiveRecord::Schema.define(version: 20150403153324) do
 
   create_table "completes", force: :cascade do |t|
     t.integer  "routine_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20150331180825) do
 
   create_table "routines", force: :cascade do |t|
     t.integer  "horse_id"
-    t.time     "due"
+    t.integer  "due"
     t.text     "description"
     t.string   "kind"
     t.datetime "created_at",  null: false
