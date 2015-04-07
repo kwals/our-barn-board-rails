@@ -18,9 +18,15 @@ class RoutinesController < ApplicationController
     @routine = Routine.find(params[:id])
   end
 
+  # def testaction(params)
+  #   @routine = Routine.find(params[:routine_id])
+  #   @routine.completes.create(params[:routine_id])
+  #   render json: "You did it."
+  # end
+
 private 
   def routine_params
-    params.require(:routine).permit(:horse_id, :description, :kind, :created_at, :updated_at)
+    params.require(:routine).permit(:horse_id, :description, :kind, :created_at, :updated_at, :routine_id)
   end
 end
 

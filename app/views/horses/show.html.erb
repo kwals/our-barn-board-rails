@@ -35,7 +35,7 @@
   <% @horse.routines.each do |routine| %>
   <%= routine.kind %>
   <%= routine.description %>
-  <%= link_to "Mark as complete", horse_routine_completes_path(routine_id: routine.id, horse_id: @horse.id), method: :post %>
+  <%= link_to "Mark as complete", routine_completes_path(routine_id: routine.id, horse_id: @horse.id), method: :post %>
   <% end %>
   <% end %>
 </p>

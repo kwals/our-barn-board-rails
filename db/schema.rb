@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403153324) do
+ActiveRecord::Schema.define(version: 20150403200539) do
 
   create_table "completes", force: :cascade do |t|
     t.integer  "routine_id"
@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(version: 20150403153324) do
     t.integer  "user_id"
     t.string   "breed"
     t.string   "color"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "gender"
     t.text     "identifying_marks"
+    t.integer  "phone_number",      limit: 12
   end
 
   add_index "horses", ["user_id"], name: "index_horses_on_user_id"
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150403153324) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "phone_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

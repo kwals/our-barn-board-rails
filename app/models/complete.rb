@@ -3,11 +3,9 @@ class Complete < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :routine
-  def initialize
-    # This should call the function to alert the owner
-  end
 
 # This is the definition the Background Worker needs to know about 
+# Break up the methods!!
   def self.incomplete(kind)
     # Go and see which completes have been made today. 
     todays_completes = []
@@ -20,11 +18,9 @@ class Complete < ActiveRecord::Base
           end
         end
       end
-
-
+      # Making too many database calls here.
 
     routines_to_check = Routine.where(kind: kind).pluck(:id)
-    binding.pry
     routines_undone = routines_to_check - todays_completes
 
     unless routines_undone.nil?
