@@ -1,6 +1,14 @@
 class HorsesController < ApplicationController
 
+  def index
+    @horses = Horse.all
+  end
+
   def new
+  end
+
+  def mine
+    @horses = Horse.where(user: current_user)
   end
 
   def create
@@ -13,18 +21,17 @@ class HorsesController < ApplicationController
   end
 
   def testaction
-    render json:  [{'horse_id' => 2, 
-      'horse_name' => 'Henry',
-      'description' => 'One flake of alfalfa hay with two scoops of grain',
-      'kind' => 'morning'},
-      {'horse_id' => 3,
-      'horse_name' => 'Ruby',
-      'description' => 'One flake of regular hay, no grain.',
-      'kind' => 'morning'},
-      {'horse_id' => 6,
-      'horse_name' => 'Charlie',
-      'description' => 'Put out into field.',
-      'kind' => 'morning'}]
+    the_results ||= []
+    Routine.where(kind: 'morning').find_each do |r|
+      the_results.push({'id' => r.id,
+      'horse_name' => r.horse.name,
+      'horse_id' => r.horse_id,
+      'description' => r.description,
+      'kind' => r.kind
+      })
+    end
+    puts the_results
+    render json: the_results
   end
 
   def show

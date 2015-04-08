@@ -1,0 +1,27 @@
+
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Horse</th>
+        <th>Owner</th>
+        <th>Age</th>
+        <th>Profile</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @horses.each do |horse| %>
+        <tr>
+          <td><%= horse[:name]%></td>
+          <td><%= horse.user.email %></td>
+          <td>Birthday </td>
+
+          <td>
+            <button><%= link_to "View Profile", horse %> </button>
+          </td>
+              </div>
+            </td>
+            <% end %>
+            </tr>
+            </tbody>
+            </table>

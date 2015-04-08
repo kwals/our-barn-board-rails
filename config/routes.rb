@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  root "horses#index"
+
+  get "/my_horses" => "horses#mine"
+
   get "/test" => "horses#testaction"
-  post '/test' => "routines#testaction"
+  post '/test/:id' => "routines#testaction"
 
   resources :horses do
     resources :routines, shallow: true do 

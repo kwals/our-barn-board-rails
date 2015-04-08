@@ -5,5 +5,6 @@ class Horse < ActiveRecord::Base
 
   validates_uniqueness_of :name
   validates_uniqueness_of :registered_name
+  validates_presence_of :birthday
 # How can I make sure the horse belongs to an existing user?
 end
