@@ -1,3 +1,4 @@
+</br>
 <p>
   <strong>Horse Name:</strong>
   <%= @horse.name %>
@@ -6,7 +7,7 @@
 <p>
   <strong>Age</strong>
   <% if @horse.birthday %>
-  <%= "#{time_ago_in_words(@horse.birthday)}" + " old."%>
+  <%= "#{time_ago_in_words(@horse.birthday)} old."%>
   <% end %>
 </p>
 <p>
@@ -39,6 +40,10 @@
   <% end %>
   <% end %>
 </p>
+
+<% if @horse.user == current_user %>
+  <%= link_to "Update Profile", edit_horse_path(@horse) %>
+<% end %>
 
 
 

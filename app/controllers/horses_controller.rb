@@ -5,6 +5,7 @@ class HorsesController < ApplicationController
   end
 
   def new
+    @horse ||= Horse.new
   end
 
   def mine
@@ -36,6 +37,19 @@ class HorsesController < ApplicationController
 
   def show
     @horse = Horse.find(params[:id])
+  end
+
+  def edit 
+    @horse = Horse.find(params[:id])
+  end
+
+  def update
+    @Horse = Horse.find(params[:id])
+    if @Horse.update(horse_params)
+      redirect_to horse_path(@Horse)
+    else
+      render :edit
+    end
   end
 
 private

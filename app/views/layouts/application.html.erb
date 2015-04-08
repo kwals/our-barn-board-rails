@@ -1,28 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-  <title>OurBarnBoard</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-1"><%= link_to "Home", root_path %></div>
-      <div class="col-sm-1"><%= link_to "My Horses", my_horses_path %></div>
-      <div class="col-sm-1"><a href="/horses/new">Register a Horse</a></div>
-      <div class="col-sm-1"><a href="/horses">Horses</a></div>
-    <p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
-
+<% render "shared/navigation" %>
 
 <% if session["error_message"] %>
   <div>

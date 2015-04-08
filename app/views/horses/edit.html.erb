@@ -1,0 +1,41 @@
+<h1> <%="Edit #{@horse.registered_name}'s information" %> </h1>
+
+<%=  form_for @horse, url: horse_path(@horse), method: :patch do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+    <p>
+    <%= f.label :registered_name %><br>
+    <%= f.text_field :registered_name %>
+  </p>
+  <h4> Enter the phone number where you would like to receive text updates about your horse </h4>
+  <p>
+    <%= f.label :phone_number %><br>
+    <%= f.number_field :phone_number %>
+  </p>
+  <p>
+    <%= f.label :birthday %><br>
+    <%= f.text_field :birthday %>
+  </p>
+  <p>
+    <%= f.label :breed %><br>
+    <%= f.text_field :breed %>
+  </p>
+  <p>
+    <%= f.label :color %><br>
+    <%= f.text_field :color %>
+  </p>
+  <p>
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </p>
+  <p>
+    <%= f.label :identifying_marks %><br>
+    <%= f.text_area :identifying_marks %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

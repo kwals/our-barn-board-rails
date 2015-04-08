@@ -13,7 +13,7 @@
         <tr>
           <td><%= horse[:name]%></td>
           <td><%= horse.user.email %></td>
-          <td>Birthday </td>
+          <td> "#{time_ago_in_words horse.birthday} old" </td>
 
           <td>
             <button><%= link_to "View Profile", horse %> </button>
@@ -23,4 +23,4 @@
             <% end %>
             </tr>
             </tbody>
-            </table>
+            </table> 
