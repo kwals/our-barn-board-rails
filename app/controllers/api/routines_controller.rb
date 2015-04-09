@@ -4,15 +4,21 @@ class Api::RoutinesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    if Time.now.hour < 12 #THIS IS UTC
+    if Time.now.hour < 20 #THIS IS LOCALTIME
       @tasks = Complete.incomplete("morning")
-    elsif Time.now.hour > 16 #THIS IS UTC
+    elsif Time.now.hour > 16 #THIS IS LOCALTIME
       @tasks = Complete.incomplete("evening")
     else
-      @tasks = []
       render json: "There are no tasks at this time."
       return
     end
+
+    the_results = get_results(@tasks)
+
+    render json: the_results
+  end
+
+  def get_results(tasks)
     the_results ||= []
     @tasks.each do |r|
       the_results.push({'id' => r.id,
@@ -23,7 +29,7 @@ class Api::RoutinesController < ApplicationController
       # 'phone_number' => r.phone_number
       })
     end
-    render json: the_results
+    the_results
   end
 
 private 

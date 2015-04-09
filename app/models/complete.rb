@@ -4,9 +4,6 @@ class Complete < ActiveRecord::Base
 
   validates_presence_of :routine
 
-# This is the definition the Background Worker needs to know about 
-# Break up the methods!!
-
   def self.incomplete(kind)
     todays_completes = []
       Complete.find_each do |c|
@@ -26,7 +23,7 @@ class Complete < ActiveRecord::Base
       routines_undone.each {|rid| leftovers.push(Routine.find(rid))}
       return leftovers
     else
-      render json: "How did you end up with nil here?"
+      render json: "All tasks comleted!"
     end
 
   end
