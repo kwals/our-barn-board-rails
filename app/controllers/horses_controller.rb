@@ -5,6 +5,7 @@ class HorsesController < ApplicationController
   end
 
   def new
+    @horse = Horse.new
   end
 
   def mine
@@ -16,23 +17,23 @@ class HorsesController < ApplicationController
     if @horse.save!
       redirect_to @horse
     else
-      render json: ["This did not work."]
+      render flash[:error] ="Nope, didn't work"
     end
   end
 
-  def testaction
-    the_results ||= []
-    Routine.where(kind: 'morning').find_each do |r|
-      the_results.push({'id' => r.id,
-      'horse_name' => r.horse.name,
-      'horse_id' => r.horse_id,
-      'description' => r.description,
-      'kind' => r.kind
-      })
-    end
-    puts the_results
-    render json: the_results
-  end
+  # def testaction
+  #   the_results ||= []
+  #   Routine.where(kind: 'morning').find_each do |r|
+  #     the_results.push({'id' => r.id,
+  #     'horse_name' => r.horse.name,
+  #     'horse_id' => r.horse_id,
+  #     'description' => r.description,
+  #     'kind' => r.kind
+  #     })
+  #   end
+  #   puts the_results
+  #   render json: the_results
+  # end
 
   def show
     @horse = Horse.find(params[:id])

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
+  
+  namespace :api do
+    resources :routines do 
+      resources :completes, shallow: true
+    end 
+  end
 
   root "horses#index"
 

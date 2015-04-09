@@ -2,7 +2,7 @@ class MorningChecker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  recurrence { secondly }
+  recurrence { daily }
 
   def perform 
     # Check completed vs. not

@@ -1,25 +1,19 @@
 class CompletesController < ApplicationController
 
-  def index
-  end
-
-  def new
-  end
+ # For APIs, you may want to use :null_session instead.
+  # protect_from_forgery with: :exception
+  skip_before_action :verify_authenticity_token
 
   def create
-    binding.pry
     @routine = Routine.find(params[:routine_id])
     @horse = Horse.find(@routine.horse_id)
-    @complete = @routine.completes.new(routine_id: @routine.id, user_id: 1)
+    @complete = @routine.completes.new(routine_id: @routine.id, user_id: current_user.id)
     if @complete.save!
       Twill.notify(@horse.phone_number)
-      respond_to do |format|
-      format.html { render @horse }
-      format.json  { render :json => "Thanks for feeding #{@horse.name}" }
-      end
+      redirect_to @horse
     else
-      render json: "Nope, no dice."
-      head 500
+      # This should now be a flash message
+      render flash[:error] = "This did not work."
     end
   end
 
