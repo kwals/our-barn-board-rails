@@ -1,7 +1,4 @@
-class Api::CompletesController < ApplicationController
-# For APIs, you may want to use  instead.
-  protect_from_forgery with: :null_session
-  skip_before_action :verify_authenticity_token
+class Api::CompletesController < ApiController
 
   def index
     render json: "Test"
@@ -15,7 +12,6 @@ class Api::CompletesController < ApplicationController
       Twill.notify(@complete)
       render :json => "Thanks for feeding #{@horse.name}" 
     else
-      # Do I need to rescue from errors here?
       render json: "Nope, no dice."
       head 500
     end
