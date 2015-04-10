@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:kwals/tiddle.git
+  revision: b86ca2ca51d188db31f47ccbe5045870c265eded
+  specs:
+    tiddle (0.2.0)
+      activerecord (~> 4.2.0)
+      devise (~> 3.4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -257,6 +265,7 @@ DEPENDENCIES
   slim-rails
   spring
   sqlite3
+  tiddle!
   twilio-ruby
   uglifier (>= 1.3.0)
   zonebie

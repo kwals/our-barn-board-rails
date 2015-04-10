@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users 
 
   namespace :api do
+    devise_scope :user do 
+      resources :sessions, only: [:create, :index]
+    end
     resources :routines do 
       resources :completes, shallow: true
     end 
@@ -9,6 +12,7 @@ Rails.application.routes.draw do
 
   root "horses#index"
   get "/my_horses" => "horses#mine"
+  # post "/api/sessions" => "api/sessions#create"
 
   resources :horses do
     resources :routines, shallow: true do 

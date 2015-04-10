@@ -4,6 +4,7 @@ class Complete < ActiveRecord::Base
 
   validates_presence_of :routine
 
+# How to refactor this method?
   def self.incomplete(kind)
     todays_completes = []
       Complete.find_each do |c|
@@ -23,9 +24,8 @@ class Complete < ActiveRecord::Base
       routines_undone.each {|rid| leftovers.push(Routine.find(rid))}
       return leftovers
     else
-      render json: "All tasks comleted!"
+      render json: "All tasks completed!"
     end
-
   end
 
 

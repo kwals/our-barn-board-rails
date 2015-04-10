@@ -1,10 +1,9 @@
 class Api::RoutinesController < ApplicationController
-  # For APIs, you may want to use  instead.
   protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token
 
   def index
-    if Time.now.hour < 20 #THIS IS LOCALTIME
+    if Time.now.hour < 12 #THIS IS LOCALTIME
       @tasks = Complete.incomplete("morning")
     elsif Time.now.hour > 16 #THIS IS LOCALTIME
       @tasks = Complete.incomplete("evening")
