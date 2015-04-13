@@ -6,23 +6,14 @@ class Complete < ActiveRecord::Base
 
 # How to refactor this method?
   def self.incomplete(kind)
-    todays_completes = []
-      Complete.find_each do |c|
-        recent = c.created_at <=> (Time.now - 6.hours)
-        if recent > 0
-          if Routine.find(c.routine_id).kind == kind
-          todays_completes.push(c.routine_id)
-          end
-        end
-      end
-
-    routines_to_check = Routine.where(kind: kind).pluck(:id)
-    routines_undone = routines_to_check - todays_completes
-
-    unless routines_undone.nil?
-      leftovers = []
-      routines_undone.each {|rid| leftovers.push(Routine.find(rid))}
-      return leftovers
+    # Client.all(:conditions => { :created_at => (Time.now.midnight - 1.day)..Time.now.midnight})
+    recent_completes = Complete.where(created_at: (Time.now - 6.hours)..Time.now)
+    if recent_completes 
+      undone = Routine.where(kind: kind).where.not(id: recent_completes.pluck(:routine_id)).includes(:horse)
+      return undone unless undone.nil?
+    elsif recent_completes.nil?
+      undone = Routine.where(kind: kind).includes(:horse)
+      return undone unless undone.nil?
     else
       render json: "All tasks completed!"
     end
