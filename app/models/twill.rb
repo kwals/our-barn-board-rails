@@ -8,8 +8,11 @@ class Twill
  def self.notify(complete)
   horse_name = complete.routine.horse.name
   kind = complete.routine.kind
-  completer = complete.user.email
-  completed_at = complete.created_at.time.getlocal
+  completer = complete.user.email.split("@")[0].capitalize
+  time_completed = complete.created_at.time.getlocal
+  just_time = time_completed.to_s.split(" ")[1]
+  q = just_time.split(":")[0]+":"+ just_time.split(":")[1]
+  completed_at = q
   user_phone = complete.routine.horse.phone_number
   
   @client.account.messages.create(

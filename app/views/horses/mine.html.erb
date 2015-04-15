@@ -12,7 +12,7 @@
       <% @horses.each do |horse| %>
         <tr>
           <td><%= horse[:name]%></td>
-          <td><%= horse.user.email %></td>
+          <td><%= horse.user.email.split("@")[0].capitalize %></td>
           <td>
             <button><%= link_to "View Profile", horse %> </button>
           </td>
