@@ -8,9 +8,11 @@ class RoutinesController < ApplicationController
     @horse = Horse.find(params[:horse_id])
     @routine = @horse.routines.new(routine_params)
     if @routine.save!
+      flash[:success] ="Routine saved"
       redirect_to @horse
     else
-      render json: "That didn't work."
+      flash[:error] = "Unable to save routine. Please try again."
+      render :create
     end
   end
 

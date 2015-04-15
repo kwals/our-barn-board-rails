@@ -1,43 +1,33 @@
 
 <p>
-  <h1><strong>Horse Name:</strong>
-  <%= @horse.name %></h1>
+
+  <h1><%= @horse.name %></h1>
 </p>
  
 <p>
-  <strong>Age</strong>
-  <% if @horse.birthday %>
-  <%= "#{time_ago_in_words(@horse.birthday)}" + " old."%>
-  <% end %>
-</p>
-<p>
-  <strong>Registered Name</strong>
+  <strong>Registered Name:</strong><br>
   <%= @horse.registered_name %>
 </p>
 
 <p>
-  <strong> Breed </strong>
+  <strong> Breed: </strong><br>
   <%= @horse.breed %>
 </p>
 
 <p>
-  <strong> Color </strong>
+  <strong> Color: </strong><br>
   <%= @horse.color %>
-</p>
+</p><br><br>
 
 <p>
-  <strong> Recent Events </strong>
-  <%= @horse.completes.last(10) %>
-</p>
-
-<p>
-  <strong> Routines </strong>
-  <% if @horse.routines %>
-  <% @horse.routines.each do |routine| %>
-  <%= routine.kind %>
-  <%= routine.description %>
-  <%= link_to "Mark as complete", routine_completes_path(routine_id: routine.id, horse_id: @horse.id), method: :post %>
+  <h3> <%= @horse.name %>'s Daily Routine</h3><br>
+  <% if @horse.routines.count > 1 %>
+  <% @horse.routines.last(2).each do |routine| %>
+  <br><strong><%= routine.kind %></strong><br>
+  <%= routine.description %><br>
   <% end %>
+  <% else %>
+  <strong><%= link_to "Record Care information for #{@horse.name}", new_horse_routine_path(horse_id: @horse.id) %></strong>
   <% end %>
 </p>
 

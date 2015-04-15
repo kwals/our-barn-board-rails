@@ -1,4 +1,5 @@
 class Api::CompletesController < ApplicationController
+  skip_before_action protect_from_forgery with: :exception
   protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
@@ -13,7 +14,8 @@ class Api::CompletesController < ApplicationController
     @complete = @routine.completes.new(routine_id: @routine.id, user_id: 1)
     if @complete.save!
       Twill.notify(@complete)
-      render :json => "Thanks for feeding #{@horse.name}" 
+      render :json => "Thanks"
+      head 200
     else
       render json: "Nope, no dice."
       head 500

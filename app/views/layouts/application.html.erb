@@ -3,6 +3,8 @@
 <head>
   <title>OurBarnBoard</title>
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link href="/assets/stylesheets/icononav.css" rel="stylesheet" type="text/css" media="all">
+  <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
@@ -10,36 +12,46 @@
 
 <body>
 <nav id="icononav">
-  <a href="#" class="user">
-    <img class="delay" src="assets/images/icons/user.jpg" alt="Placeholder"><%= link_to "Our Barn Board", root_path %>
+  <a href="/" class="user">
+    <img class="delay" src="http://freeiconbox.com/icon/256/33093.png" alt="OurBarnBoard">"Our Barn Board"</a>
   </a>
   <ul class="links">
-    <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to "My Horses", my_horses_path %></li>
-    <li><%= link_to "All Horses", horses_path %></li>
-  </ul>
+    <li><strong><%= link_to "Home", root_path %></strong></li>
+    <li><strong><%= link_to "My Horses", my_horses_path %></strong></li>
+    <li><strong><%= link_to "Register Horse", new_horse_path %></strong></li>
+
 
 
 <% if user_signed_in? %>
-<ul>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-</ul>
+
+    <strong class="navbar-link">Logged in as </strong><br><strong class="navbar-link"><%= current_user.email.split("@")[0] %></strong><br>
+    <strong><%= link_to 'Edit profile', edit_user_registration_path, :class=>'navbar-link' %></strong> <br>
+    <strong><%= link_to "Logout", destroy_user_session_path, :class =>'navbar-link', method: :delete %></strong>
+
 <% else %>
-<ul>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-</ul>
+
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> <br>
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+
 <% end %>
+
+</ul>
 
 </nav>
 
 
-
 <div class="container">
 
+<div class="flash">
+       <% flash.each do |name, msg| %>
+       <div class="alert alert-<%= flash_class name %>">
+         <%= msg %>
+       </div>
+       <% end %>
+     </div>
+
 <%= yield %>
+
 </div>
 
 </body>

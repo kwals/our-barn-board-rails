@@ -4,9 +4,9 @@ class Api::RoutinesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if Time.now.hour < 12 #THIS IS LOCALTIME
+    if Time.now.hour <= 12 #THIS IS LOCALTIME
       @tasks = Complete.incomplete("morning")
-    elsif Time.now.hour > 12 #THIS IS LOCALTIME
+    elsif Time.now.hour > 12  #THIS IS LOCALTIME
       @tasks = Complete.incomplete("evening")
     else
       render json: "There are no tasks at this time."

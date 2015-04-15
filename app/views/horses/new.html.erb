@@ -9,13 +9,9 @@
     <%= f.label :registered_name %><br>
     <%= f.text_field :registered_name %>
   </p>
-  <h3> Enter the phone number where you would like to receive text updates about your horse </h3>
-  <p>
-    <%= f.label :phone_number %><br>
-    <%= f.number_field :phone_number %>
-  </p>
   <p>
     <%= f.label :birthday %><br>
+    YYYY-MM-DD<br>
     <%= f.text_field :birthday %>
   </p>
   <p>
@@ -34,7 +30,13 @@
     <%= f.label :identifying_marks %><br>
     <%= f.text_area :identifying_marks %>
   </p>
-
+  <br>
+    <h4> Enter your phone number <br>to recieve 
+    updates about your horse:</h4>
+  <p>
+    <%= f.label :phone_number %><br>
+    <%= f.number_field :phone_number %>
+  </p>
   <p>
     <%= f.submit %>
   </p>
