@@ -1,8 +1,8 @@
 class Api::CompletesController < ApplicationController
   skip_before_action protect_from_forgery with: :exception
-  # protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!
 
   def create
     @routine = Routine.find(params[:routine_id])

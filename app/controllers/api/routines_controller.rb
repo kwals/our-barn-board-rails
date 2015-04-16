@@ -1,6 +1,6 @@
 class Api::RoutinesController < ApplicationController
   skip_before_action protect_from_forgery with: :exception 
-  # protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!
 
