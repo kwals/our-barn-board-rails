@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410173256) do
+ActiveRecord::Schema.define(version: 20150416184615) do
 
   create_table "authentication_tokens", force: :cascade do |t|
     t.string   "body"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20150410173256) do
 
   create_table "routines", force: :cascade do |t|
     t.integer  "horse_id"
-    t.integer  "due"
     t.text     "description"
     t.string   "kind"
     t.datetime "created_at",  null: false
