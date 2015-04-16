@@ -2,7 +2,7 @@ class Api::RoutinesController < ApplicationController
   skip_before_action protect_from_forgery with: :exception 
   # protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token
-  # before_action :authenticate_user!
+  skip_before_action :authenticate_user!
 
   def index
     if Time.now.hour <= 12 #THIS IS LOCALTIME
