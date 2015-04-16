@@ -2,7 +2,6 @@ class CreateRoutines < ActiveRecord::Migration
   def change
     create_table :routines do |t|
       t.belongs_to :horse, index: true
-      t.time :due
       t.text :description
       t.string :kind
 
