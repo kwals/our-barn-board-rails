@@ -25,6 +25,7 @@
   <% @horse.routines.last(2).each do |routine| %>
   <br><strong><%= routine.kind %></strong><br>
   <%= routine.description %><br>
+  <%= link_to "Update", edit_routine_path(routine) %>
   <% end %>
   <% else %>
   <strong><%= link_to "Record Care information for #{@horse.name}", new_horse_routine_path(horse_id: @horse.id) %></strong>

@@ -16,6 +16,17 @@ class RoutinesController < ApplicationController
     end
   end
 
+  def edit
+    @routine = Routine.find(params[:id])
+  end
+
+  def update
+    @routine = Routine.find(params[:id])
+    @horse = Horse.find(@routine.horse_id)
+    flash[:success] = "You have updated #{@horse.name}'s routine."
+    redirect_to @horse 
+  end
+
   def show
     @routine = Routine.find(params[:id])
   end
