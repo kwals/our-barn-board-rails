@@ -4,6 +4,7 @@ class Complete < ActiveRecord::Base
   validates_presence_of :routine
 
   def self.incomplete(kind)
+    kind.capitalize!
     recent_completes = Complete.where(created_at: (Time.now - 6.hours)..Time.now)
     if recent_completes 
       undone = Routine.where(kind: kind).where.not(id: recent_completes.pluck(:routine_id)).includes(:horse)

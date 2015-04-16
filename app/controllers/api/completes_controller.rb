@@ -4,10 +4,6 @@ class Api::CompletesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
 
-  def index
-    render json: "Test"
-  end
-
   def create
     @routine = Routine.find(params[:routine_id])
     @horse = Horse.find(@routine.horse_id)
