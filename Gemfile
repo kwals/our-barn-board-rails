@@ -32,7 +32,6 @@ end
 gem 'redis'
 gem 'sidekiq'
 gem 'sidetiq'
-gem 'warden'
 
 gem 'devise'
 gem 'figaro'
