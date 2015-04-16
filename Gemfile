@@ -28,7 +28,8 @@ gem 'tiddle'
 group :development, :test do
   gem 'spring'
 end
-
+ 
+gem 'warden'
 gem 'redis'
 gem 'sidekiq'
 gem 'sidetiq'

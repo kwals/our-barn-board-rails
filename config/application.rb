@@ -6,6 +6,18 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 require 'tiddle'
+# require 'warden'
+# require 'forwardable'
+# require 'warden/mixins/common'
+# require 'warden/proxy'
+# require 'warden/manager'
+# require 'warden/errors'
+# require 'warden/strategies'
+# require 'warden/strategies/base'
+# require 'warden/serializers'
+# require 'warden/serializers/base'
+# require 'warden/serializers/cookie'
+# require 'warden/serializers/session'
 # ^GET RID of THIS FIXME
 
 module OurBarnBoard

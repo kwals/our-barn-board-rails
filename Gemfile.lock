@@ -265,4 +265,5 @@ DEPENDENCIES
   tiddle
   twilio-ruby
   uglifier (>= 1.3.0)
+  warden
   zonebie
