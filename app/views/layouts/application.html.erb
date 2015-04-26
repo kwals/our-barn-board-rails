@@ -24,7 +24,7 @@
 <% if user_signed_in? %>
 
     <strong class="navbar-link">Logged in as </strong><br><strong class="navbar-link"><%= current_user.email.split("@")[0] %></strong><br>
-    <strong><%= link_to 'Edit profile', edit_user_registration_path, :class=>'navbar-link' %></strong> <br>
+ 
     <strong><%= link_to "Logout", destroy_user_session_path, :class =>'navbar-link', method: :delete %></strong>
 
 <% else %>
